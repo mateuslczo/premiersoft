@@ -18,15 +18,14 @@
     <Folder Include="Api\Controllers\" />
     <Folder Include="Api\" />
     <Folder Include="Application\Commands\" />
-    <Folder Include="Application\Interfaces\" />
     <Folder Include="Application\Queries\" />
     <Folder Include="Domain\Entities\" />
-    <Folder Include="Domain\Interfaces\" />
+    <Folder Include="Domain\Enums\" />
     <Folder Include="Domain\Exceptions\" />
     <Folder Include="Domain\ValueObjects\" />
     <Folder Include="Domain\Events\" />
-    <Folder Include="Infrastructure\Interfaces\" />
-    <Folder Include="Infrastructure\Data\" />
+    <Folder Include="Infrastructure\Data\Repositories\" />
+    <Folder Include="Infrastructure\Interfaces\IRepositories\" />
   </ItemGroup>
 
 </Project>
