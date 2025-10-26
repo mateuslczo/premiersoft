@@ -49,3 +49,10 @@ Dockerfile.local
 # Temp files
 *.tmp
 *.temp
+
+# SonarQube
+.sonar/
+.target/sonar/
+build/sonar/
+*.sonar.tmp
+sonar-report.*

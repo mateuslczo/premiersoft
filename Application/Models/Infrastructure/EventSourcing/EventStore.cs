@@ -1,13 +1,13 @@
-﻿using BankMore.Domain.Events.IEvents;
-using BankMore.Infrastructure.Data;
-using BankMore.Infrastructure.Data.EventModels;
+﻿using BankMore.Application.Models.Infrastructure.ConfigContext;
+using BankMore.Application.Models.Infrastructure.EventSourcing.Models;
+using BankMore.Domain.Interfaces.IEvents;
 using Dapper;
 using System.Text.Json;
 
-namespace BankMore.Domain.Events
+namespace BankMore.Application.Models.Infrastructure.EventSourcing
 {
 
-    public class EventStore :IEventStore
+    public class EventStore : IEventStore
     {
         private readonly DapperContext _context;
 
@@ -45,10 +45,10 @@ namespace BankMore.Domain.Events
         public async Task<IEnumerable<IEventDomain>> GetEventsAsync(Guid aggregateId)
         {
             const string sql = @"
-            SELECT EventType, EventData, OccurredOn
-            FROM EventStore 
-            WHERE AggregateId = :AggregateId 
-            ORDER BY Version";
+                                    SELECT EventType, EventData, OccurredOn
+                                    FROM EventStore 
+                                    WHERE AggregateId = :AggregateId 
+                                    ORDER BY Version";
 
             var events = await _context.Connection.QueryAsync<EventStoreModel>(sql, new { AggregateId = aggregateId });
 
@@ -59,10 +59,10 @@ namespace BankMore.Domain.Events
         {
 
             const string sql = @"
-        SELECT EventType, EventData, OccurredOn
-        FROM EventStore 
-        WHERE EventType = :EventType
-        ORDER BY Version"; 
+                                    SELECT EventType, EventData, OccurredOn
+                                    FROM EventStore 
+                                    WHERE EventType = :EventType
+                                    ORDER BY Version";
 
             var events = await _context.Connection.QueryAsync<EventStoreModel>(sql, new { EventType = eventType });
 
