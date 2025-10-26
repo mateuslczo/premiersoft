@@ -1,20 +1,20 @@
 ﻿using Oracle.ManagedDataAccess.Client;
 using Dapper;
 
-namespace BankMore.Infrastructure.Data
+namespace BankMore.Application.Models.Infrastructure.ConfigContext
 {
-	/// <summary>
-	/// criar três tabelas no banco de dados Oracle
-	/// </summary>
-	public class DatabaseConfiguration
+    /// <summary>
+    /// criar três tabelas no banco de dados Oracle
+    /// </summary>
+    public class DatabaseConfiguration
     {
 
-		/// <summary>
-		/// Abre uma conexão com o banco de Oracle usando a string de conexão fornecida
-		/// </summary>
+        /// <summary>
+        /// Abre uma conexão com o banco de Oracle usando a string de conexão fornecida
+        /// </summary>
         /// <remarks>Define tres tabelas relacionadas a eventos (necessária quando a aplicação usa padrão CQRS)</remarks>
-		/// <param name="connectionString"></param>
-		public static void Initialize(string connectionString)
+        /// <param name="connectionString"></param>
+        public static void Initialize(string connectionString)
         {
             using var connection = new OracleConnection(connectionString);
             connection.Open();

@@ -1,9 +1,8 @@
-
-using BankMore.Infrastructure.Data;
+using BankMore.Application.Models.Infrastructure.ConfigContext;
 
 namespace BankMore
 {
-	public class Program
+    public class Program
 	{
 		public static void Main(string[] args)
 		{
