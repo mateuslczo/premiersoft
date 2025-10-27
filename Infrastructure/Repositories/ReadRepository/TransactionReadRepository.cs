@@ -16,32 +16,32 @@ namespace BankMore.Application.Models.Infrastructure.Repositories.ReadRepository
             _context = context;
         }
 
-        public async Task<IEnumerable<TransactionReadModel>> GetTransactionByAccountAsync(
+        public async Task<TransactionReadModel> GetTransactionByIdAccountAsync(
             Guid contaId, DateTime? dataInicio, DateTime? dataFim)
         {
             var sql = @"
-						  SELECT Id, ContaId, TipoTransacao, Valor, SaldoAnterior, SaldoAtual, Descricao, DataTransacao
-						  FROM TransacoesReadModel 
-						  WHERE ContaId = :ContaId";
+						  SELECT IdMovimento, idContaCorrente, TipoMovimento, Valor, SaldoAnterior, SaldoAtual, Descricao, DataMovimento
+						  FROM movimento 
+						  WHERE idContaCorrente = :IdContaCorrente";
 
-            var parameters = new DynamicParameters();
-            parameters.Add("ContaId", contaId);
+			var parameters = new DynamicParameters();
+            parameters.Add("idContaCorrente", contaId);
 
             if (dataInicio.HasValue)
             {
-                sql += " AND DataTransacao >= :DataInicio";
+                sql += " AND DataMovimento >= :DataInicio";
                 parameters.Add("DataInicio", dataInicio.Value);
             }
 
             if (dataFim.HasValue)
             {
-                sql += " AND DataTransacao <= :DataFim";
+                sql += " AND DataMovimento <= :DataFim";
                 parameters.Add("DataFim", dataFim.Value);
             }
 
-            sql += " ORDER BY DataTransacao DESC";
+            sql += " ORDER BY DataMovimento DESC";
 
-            return await _context.Connection.QueryAsync<TransactionReadModel>(sql, parameters);
+            return await _context.GetConnection().QueryFirstOrDefaultAsync<TransactionReadModel>(sql, parameters);
         }
 
     }

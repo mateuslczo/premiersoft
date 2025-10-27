@@ -1,6 +1,7 @@
 ﻿using BankMore.Application.Models.Infrastructure.Repositories.ReadRepository;
 using BankMore.Application.Models.ReadModels;
 using BankMore.Application.Queries;
+using BankMore.Domain.Interfaces.IRepositories.IReadRepository;
 using MediatR;
 
 namespace BankMore.Application.Handlers
@@ -8,11 +9,11 @@ namespace BankMore.Application.Handlers
 
     public class GetAccountByIdQueryHandler : IRequestHandler<GetAccountByIdQuery, AccountReadModel?>
     {
-        private readonly AccountReadRepository _repository;
+        private readonly IAccountReadRepository _repository;
         private readonly ILogger<GetAccountByIdQueryHandler> _logger;
 
         public GetAccountByIdQueryHandler(
-            AccountReadRepository repository,
+			IAccountReadRepository repository,
             ILogger<GetAccountByIdQueryHandler> logger)
         {
             _repository = repository;

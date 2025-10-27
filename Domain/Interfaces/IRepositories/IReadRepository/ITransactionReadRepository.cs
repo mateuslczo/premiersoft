@@ -4,7 +4,7 @@ namespace BankMore.Domain.Interfaces.IRepositories.IReadRepository
 {
 	public interface ITransactionReadRepository
 	{
-		Task<IEnumerable<TransactionReadModel>> GetTransactionByAccountAsync(Guid contaId, DateTime? dataInicio, DateTime? dataFim);
+		Task<TransactionReadModel> GetTransactionByIdAccountAsync(Guid contaId, DateTime? dataInicio=null, DateTime? dataFim= null);
 
 	}
 }

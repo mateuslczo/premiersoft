@@ -1,0 +1,96 @@
+{
+  "scannerProperties": [
+    {
+      "key": "sonar.scanner.app",
+      "value": "ScannerMSBuild"
+    },
+    {
+      "key": "sonar.scanner.appVersion",
+      "value": "11.0"
+    },
+    {
+      "key": "sonar.scanner.bootstrapStartTime",
+      "value": "1761502975000"
+    },
+    {
+      "key": "sonar.projectKey",
+      "value": "BankMore"
+    },
+    {
+      "key": "sonar.working.directory",
+      "value": "C:\\owner-projects\\CooperAna\\BankMore\\.sonarqube\\out\\.sonar"
+    },
+    {
+      "key": "sonar.projectBaseDir",
+      "value": "C:\\owner-projects\\CooperAna\\BankMore"
+    },
+    {
+      "key": "sonar.pullrequest.cache.basepath",
+      "value": "C:\\owner-projects\\CooperAna\\BankMore"
+    },
+    {
+      "key": "sonar.sources",
+      "value": ""
+    },
+    {
+      "key": "sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "sonar.modules",
+      "value": "5FB382A0-09D6-4131-B040-DDEBE02AE847"
+    },
+    {
+      "key": "5FB382A0-09D6-4131-B040-DDEBE02AE847.sonar.projectKey",
+      "value": "BankMore:5FB382A0-09D6-4131-B040-DDEBE02AE847"
+    },
+    {
+      "key": "5FB382A0-09D6-4131-B040-DDEBE02AE847.sonar.projectName",
+      "value": "BankMore"
+    },
+    {
+      "key": "5FB382A0-09D6-4131-B040-DDEBE02AE847.sonar.projectBaseDir",
+      "value": "C:\\owner-projects\\CooperAna\\BankMore"
+    },
+    {
+      "key": "5FB382A0-09D6-4131-B040-DDEBE02AE847.sonar.working.directory",
+      "value": "C:\\owner-projects\\CooperAna\\BankMore\\.sonarqube\\out\\.sonar\\mod0"
+    },
+    {
+      "key": "5FB382A0-09D6-4131-B040-DDEBE02AE847.sonar.sourceEncoding",
+      "value": "utf-8"
+    },
+    {
+      "key": "5FB382A0-09D6-4131-B040-DDEBE02AE847.sonar.tests",
+      "value": ""
+    },
+    {
+      "key": "5FB382A0-09D6-4131-B040-DDEBE02AE847.sonar.sources",
+      "value": "C:\\owner-projects\\CooperAna\\BankMore\\Application\\Models\\ReadModels\\AccountReadModel.cs,C:\\owner-projects\\CooperAna\\BankMore\\Application\\Models\\ReadModels\\TransactionReadModel.cs,C:\\owner-projects\\CooperAna\\BankMore\\Application\\Models\\WriteModels\\AccountWriteModel.cs,C:\\owner-projects\\CooperAna\\BankMore\\Application\\Models\\WriteModels\\TransactionWriteModel.cs,C:\\owner-projects\\CooperAna\\BankMore\\Domain\\Interfaces\\IEvents\\IEventDomain.cs,C:\\owner-projects\\CooperAna\\BankMore\\Domain\\Interfaces\\IEvents\\IEventStore.cs,C:\\owner-projects\\CooperAna\\BankMore\\Domain\\Interfaces\\IRepositories\\IGenericReadyRepository.cs,C:\\owner-projects\\CooperAna\\BankMore\\Domain\\Interfaces\\IRepositories\\IGenericWriteRepository.cs,C:\\owner-projects\\CooperAna\\BankMore\\Domain\\Interfaces\\IRepositories\\IReadRepository\\IAccountReadRepository.cs,C:\\owner-projects\\CooperAna\\BankMore\\Domain\\Interfaces\\IRepositories\\IReadRepository\\ITransactionReadRepository.cs,C:\\owner-projects\\CooperAna\\BankMore\\Domain\\Interfaces\\IRepositories\\IWriteRepository\\IAccountWriteRepository.cs,C:\\owner-projects\\CooperAna\\BankMore\\Domain\\Interfaces\\IRepositories\\IWriteRepository\\ITransactionWriteRepository.cs,C:\\owner-projects\\CooperAna\\BankMore\\Infrastructure\\ConfigContext\\DapperContext.cs,C:\\owner-projects\\CooperAna\\BankMore\\Infrastructure\\ConfigContext\\DatabaseConfiguration.cs,C:\\owner-projects\\CooperAna\\BankMore\\Infrastructure\\EventSourcing\\EventStore.cs,C:\\owner-projects\\CooperAna\\BankMore\\Infrastructure\\EventSourcing\\Models\\EventStoreModel.cs,C:\\owner-projects\\CooperAna\\BankMore\\Infrastructure\\Repositories\\GenericReadRepository.cs,C:\\owner-projects\\CooperAna\\BankMore\\Infrastructure\\Repositories\\GenericWriteRepository.cs,C:\\owner-projects\\CooperAna\\BankMore\\Infrastructure\\Repositories\\ReadRepository\\AccountReadRepository.cs,C:\\owner-projects\\CooperAna\\BankMore\\Infrastructure\\Repositories\\ReadRepository\\TransactionReadRepository.cs,C:\\owner-projects\\CooperAna\\BankMore\\Infrastructure\\Repositories\\WriteRepository\\AccountWriteRepository.cs,C:\\owner-projects\\CooperAna\\BankMore\\Infrastructure\\Repositories\\WriteRepository\\TransactionWriteRepository.cs,C:\\owner-projects\\CooperAna\\BankMore\\Program.cs,C:\\owner-projects\\CooperAna\\BankMore\\obj\\Debug\\net8.0\\BankMore.GlobalUsings.g.cs,\"C:\\owner-projects\\CooperAna\\BankMore\\obj\\Debug\\net8.0\\.NETCoreApp,Version=v8.0.AssemblyAttributes.cs\",C:\\owner-projects\\CooperAna\\BankMore\\obj\\Debug\\net8.0\\BankMore.AssemblyInfo.cs,C:\\owner-projects\\CooperAna\\BankMore\\obj\\Debug\\net8.0\\BankMore.MvcApplicationPartsAssemblyInfo.cs,C:\\owner-projects\\CooperAna\\BankMore\\appsettings.Development.json,C:\\owner-projects\\CooperAna\\BankMore\\appsettings.json,C:\\owner-projects\\CooperAna\\BankMore\\.dockerignore,C:\\owner-projects\\CooperAna\\BankMore\\.gitignore,C:\\owner-projects\\CooperAna\\BankMore\\BankMore.http,C:\\owner-projects\\CooperAna\\BankMore\\Dockerfile,C:\\owner-projects\\CooperAna\\BankMore\\README.md,C:\\owner-projects\\CooperAna\\BankMore\\Properties\\launchSettings.json,C:\\owner-projects\\CooperAna\\BankMore\\obj\\BankMore.csproj.nuget.dgspec.json,C:\\owner-projects\\CooperAna\\BankMore\\obj\\project.assets.json,C:\\owner-projects\\CooperAna\\BankMore\\.vs\\BankMore\\config\\applicationhost.config,C:\\owner-projects\\CooperAna\\BankMore\\.vs\\BankMore\\v17\\DocumentLayout.backup.json,C:\\owner-projects\\CooperAna\\BankMore\\.vs\\BankMore\\v17\\DocumentLayout.json,C:\\owner-projects\\CooperAna\\BankMore\\bin\\Debug\\net8.0\\appsettings.Development.json,C:\\owner-projects\\CooperAna\\BankMore\\bin\\Debug\\net8.0\\appsettings.json,C:\\owner-projects\\CooperAna\\BankMore\\bin\\Debug\\net8.0\\BankMore.deps.json,C:\\owner-projects\\CooperAna\\BankMore\\bin\\Debug\\net8.0\\BankMore.runtimeconfig.json,C:\\owner-projects\\CooperAna\\BankMore\\obj\\Debug\\net8.0\\ApiEndpoints.json,C:\\owner-projects\\CooperAna\\BankMore\\obj\\Debug\\net8.0\\BankMore.sourcelink.json,C:\\owner-projects\\CooperAna\\BankMore\\obj\\Debug\\net8.0\\staticwebassets.build.json"
+    },
+    {
+      "key": "5FB382A0-09D6-4131-B040-DDEBE02AE847.sonar.cs.analyzer.projectOutPaths",
+      "value": "C:\\owner-projects\\CooperAna\\BankMore\\.sonarqube\\out\\0"
+    },
+    {
+      "key": "5FB382A0-09D6-4131-B040-DDEBE02AE847.sonar.cs.roslyn.reportFilePaths",
+      "value": "C:\\owner-projects\\CooperAna\\BankMore\\.sonarqube\\out\\0\\Issues.json"
+    },
+    {
+      "key": "5FB382A0-09D6-4131-B040-DDEBE02AE847.sonar.cs.scanner.telemetry",
+      "value": "C:\\owner-projects\\CooperAna\\BankMore\\.sonarqube\\out\\0\\Telemetry.json"
+    },
+    {
+      "key": "sonar.token",
+      "value": "***"
+    },
+    {
+      "key": "sonar.host.url",
+      "value": "http://localhost:9000"
+    },
+    {
+      "key": "sonar.visualstudio.enable",
+      "value": "false"
+    }
+  ]
+}

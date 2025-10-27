@@ -11,20 +11,18 @@
 
   <ItemGroup>
     <PackageReference Include="Cqrs" Version="6.0.0.76" />
+    <PackageReference Include="CSharpFunctionalExtensions" Version="3.6.0" />
     <PackageReference Include="Dapper" Version="2.1.66" />
     <PackageReference Include="MediatR" Version="13.1.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite.Core" Version="9.0.10" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.21.0" />
-    <PackageReference Include="Oracle.ManagedDataAccess" Version="23.26.0" />
+    <PackageReference Include="Oracle.ManagedDataAccess.Core" Version="23.26.0" />
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" Version="3.0.2" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Api\Controllers\" />
-    <Folder Include="Api\" />
-    <Folder Include="Domain\Entities\" />
     <Folder Include="Domain\Enums\" />
-    <Folder Include="Domain\Exceptions\" />
-    <Folder Include="Domain\ValueObjects\" />
   </ItemGroup>
 
 </Project>

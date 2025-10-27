@@ -17,17 +17,17 @@ namespace BankMore.Application.Models.Infrastructure.Repositories.WriteRepositor
         }
 
 
-        public async Task AddTransactionByAccountAsync(TransactionWriteModel transacao)
+        public async Task AddTransactionByAccountAsync(TransactionWriteModel transaction)
         {
             const string sql = @"
-								  INSERT INTO TransacoesReadModel 
-								  (Id, ContaId, TipoTransacao, Valor, SaldoAnterior
-								  , SaldoAtual, Descricao, DataTransacao)
+								  INSERT INTO movimento 
+								  (idMovimento, idContaCorrente, tipoMovimento, valor, saldoAnterior
+								  , saldoAtual, descricao, dataMovimento)
 								  VALUES 
-								  (:Id, :ContaId, :TipoTransacao, :Valor, :SaldoAnterior
-								  , :SaldoAtual, :Descricao, :DataTransacao)";
+								  (:IdMovimento, :IdContaCorrente, :TipoMovimento, :Valor, :SaldoAnterior
+								  , :SaldoAtual, :Descricao, :DataMovimento)";
 
-            await _context.Connection.ExecuteAsync(sql, transacao, _context.Transaction);
+			await _context.GetConnection().ExecuteAsync(sql, transaction, _context.Transaction);
         }
     }
 }
