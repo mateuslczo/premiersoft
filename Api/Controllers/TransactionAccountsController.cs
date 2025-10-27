@@ -2,12 +2,14 @@
 using BankMore.Application.Models.ReadModels;
 using BankMore.Application.Queries;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankMore.API.Controllers
 {
 	[ApiController]
 	[Route("api/[controller]")]
+	[Authorize(Roles = "User")]
 	public class TransactionAccountsController :ControllerBase
 	{
 		private readonly IMediator _mediator;

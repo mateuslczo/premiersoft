@@ -1,15 +1,17 @@
 ﻿using BankMore.Application.Commands;
 using BankMore.Application.Models.ReadModels;
+using BankMore.Application.Models.Responses;
 using BankMore.Application.Queries;
 using BankMore.Domain.Entities;
-using BankMore.Domain.ValueObjects;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BankMore.API.Controllers
 {
 	[ApiController]
 	[Route("api/[controller]")]
+	[Authorize(Roles = "User")]
 	public class AccountsController :ControllerBase
 	{
 		private readonly IMediator _mediator;
@@ -39,7 +41,13 @@ namespace BankMore.API.Controllers
 					command.Nome, command.Numero);
 
 				if (string.IsNullOrWhiteSpace(command.Cpf) || string.IsNullOrWhiteSpace(command.Senha))
-					return BadRequest(new { Error = "CPF e senha são obrigatórios.", Tipo = "VALIDATION_ERROR" });
+					return BadRequest(new CreateAccountResponse
+					{
+						Success = false,
+						Message = "CPF e senha são obrigatórios.",
+						Error = "CPF e senha são obrigatórios.",
+						Tipo = "VALIDATION_ERROR"
+					});
 
 				var account = new CurrentAccount(command.Nome, command.Senha);
 
@@ -54,14 +62,24 @@ namespace BankMore.API.Controllers
 				_logger.LogInformation("Conta criada com sucesso. ID: {AccountId}", accountId);
 
 				return CreatedAtAction(
-					nameof(GetAccountById),
-					new { id = accountId },
-					new { Id = accountId, Message = "Conta criada com sucesso" });
+				nameof(GetAccountById),
+				new { id = accountId },
+				new CreateAccountResponse
+				{
+					Success = true,
+					Message = "Conta criada com sucesso",
+					IdContaCorrente = accountId
+				});
 			}
 			catch (Exception ex)
 			{
 				_logger.LogError(ex, ex.Message+" {CPF}", command.Cpf);
-				return StatusCode(400, new { Error = ex.Message });
+				return BadRequest(new CreateAccountResponse
+				{
+					Success = false,
+					Message = ex.Message,
+					Error = ex.Message
+				});
 			}
 		}
 
