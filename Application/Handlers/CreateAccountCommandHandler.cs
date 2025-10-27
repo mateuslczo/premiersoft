@@ -20,10 +20,6 @@ namespace BankMore.Application.Handlers
         public async Task<Guid> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
         {
 
-			var cpfResult = CpfValidator.Validate(request.Cpf);
-			if (cpfResult.IsFailure)
-				throw new CustomExceptions("INVALID_DOCUMENT", cpfResult.Error);
-
 			var accountId = Guid.NewGuid();
 
             var account = new AccountWriteModel

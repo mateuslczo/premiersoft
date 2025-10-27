@@ -5,9 +5,13 @@ using BankMore.Application.Models.Infrastructure.Repositories.WriteRepository;
 using BankMore.Domain.Interfaces.IRepositories.IReadRepository;
 using BankMore.Domain.Interfaces.IRepositories.IWriteRepository;
 using Dapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Data.Sqlite;
+using Microsoft.IdentityModel.Tokens;
 using SQLitePCL;
 using System.Data;
+using System.Text;
+
 
 namespace BankMore
 {
@@ -16,6 +20,22 @@ namespace BankMore
 		public static void Main(string[] args)
 		{
 			var builder = WebApplication.CreateBuilder(args);
+
+			// JWT Token
+			builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+	.AddJwtBearer(options =>
+	{
+		options.TokenValidationParameters = new TokenValidationParameters
+		{
+			ValidateIssuer = true,
+			ValidateAudience = true,
+			ValidateLifetime = true,
+			ValidateIssuerSigningKey = true,
+			ValidIssuer = builder.Configuration["Jwt:Issuer"],
+			ValidAudience = builder.Configuration["Jwt:Audience"],
+			IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+		};
+	});
 
 			SqlMapper.AddTypeHandler(new DecimalStringHandler());
 
@@ -63,8 +83,8 @@ namespace BankMore
 
 			app.UseHttpsRedirection();
 
+			app.UseAuthentication();
 			app.UseAuthorization();
-
 
 			app.MapControllers();
 
