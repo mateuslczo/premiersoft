@@ -1,12 +1,16 @@
 ﻿namespace BankMore.Application.Models.WriteModels
 {
+
+	/// <summary>
+	/// Classe de modelo de entidade (tabela ContaCorrente)
+	/// </summary>
 	public class TransactionWriteModel
 	{
-		public Guid Id { get; set; }
+		public Guid IdMovimento { get; set; }
 
-		public Guid ContaId { get; set; }
+		public Guid IdContaCorrente { get; set; }
 
-		public string TipoTransacao { get; set; } = string.Empty;
+		public string TipoMovimento { get; set; } = string.Empty;
 
 		public decimal Valor { get; set; }
 
@@ -16,7 +20,7 @@
 
 		public string Descricao { get; set; } = string.Empty;
 
-		public DateTime DataTransacao { get; set; }
+		public string DataMovimento { get; set; }
 	}
 
 }

@@ -1,6 +1,9 @@
 ﻿namespace BankMore.Application.Models.WriteModels
 {
 
+	/// <summary>
+	/// Classe de modelo de entidade (tabela ContaCorrente)
+	/// </summary>
 	public class AccountWriteModel
 	{
 
@@ -12,8 +15,10 @@
 
 		public bool Ativo { get; set; } = false;
 
-		public string? Senha { get; set; }
+		public string Senha { get; set; }
 
 		public string? Salt { get; set; }
+
+		public decimal Saldo { get; set; } = 0M;
 	}
 }

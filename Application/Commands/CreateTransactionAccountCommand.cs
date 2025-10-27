@@ -1,10 +1,8 @@
-﻿namespace BankMore.Application.Models.ReadModels
-{
+﻿using MediatR;
 
-	/// <summary>
-	/// Classe de modelo de entidade (Tabela de Movimento)
-	/// </summary>
-	public class TransactionReadModel
+namespace BankMore.Application.Commands
+{
+	public class CreateTransactionAccountCommand :IRequest<Guid>
 	{
 		public Guid IdMovimento { get; set; }
 
@@ -22,5 +20,4 @@
 
 		public DateTime DataMovimento { get; set; }
 	}
-
 }

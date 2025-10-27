@@ -1,0 +1,1 @@
+JR4C:\owner-projects\CooperAna\BankMore\BankMore.csproj¢net8.0òCSharp12

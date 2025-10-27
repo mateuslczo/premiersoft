@@ -3,6 +3,9 @@
 namespace BankMore.Application.Models.ReadModels
 {
 
+	/// <summary>
+	/// Classe de modelo de entidade (tabela ContaCorrente)
+	/// </summary>
 	public class AccountReadModel
 	{
 
@@ -13,5 +16,7 @@ namespace BankMore.Application.Models.ReadModels
 		public string? Nome { get; set; }
 
 		public bool Ativo { get; set; }
+
+		public decimal Saldo { get; set; }
 	}
 }

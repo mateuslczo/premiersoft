@@ -38,7 +38,7 @@ namespace BankMore.Application.Models.Infrastructure.EventSourcing
                     evento.OccurredOn
                 };
 
-                await _context.Connection.ExecuteAsync(sql, parameters, _context.Transaction);
+                await _context.GetConnection().ExecuteAsync(sql, parameters, _context.Transaction);
             }
         }
 
@@ -50,7 +50,7 @@ namespace BankMore.Application.Models.Infrastructure.EventSourcing
                                     WHERE AggregateId = :AggregateId 
                                     ORDER BY Version";
 
-            var events = await _context.Connection.QueryAsync<EventStoreModel>(sql, new { AggregateId = aggregateId });
+            var events = await _context.GetConnection().QueryAsync<EventStoreModel>(sql, new { AggregateId = aggregateId });
 
             return events.Select(ToDomainEvent);
         }
@@ -64,7 +64,7 @@ namespace BankMore.Application.Models.Infrastructure.EventSourcing
                                     WHERE EventType = :EventType
                                     ORDER BY Version";
 
-            var events = await _context.Connection.QueryAsync<EventStoreModel>(sql, new { EventType = eventType });
+            var events = await _context.GetConnection().QueryAsync<EventStoreModel>(sql, new { EventType = eventType });
 
             var domainEvents = new List<IEventDomain>();
 

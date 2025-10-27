@@ -16,7 +16,7 @@ namespace BankMore.Application.Models.Infrastructure.Repositories
 
         protected GenericReadRepository(DapperContext context, string tableName, string keyColumn = "Id")
         {
-            _connection = context.Connection;
+            _connection = context.GetConnection();
             _transaction = context.Transaction;
             _tableName = tableName;
             _keyColumn = keyColumn;

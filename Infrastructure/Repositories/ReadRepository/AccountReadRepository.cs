@@ -18,13 +18,20 @@ namespace BankMore.Application.Models.Infrastructure.Repositories.ReadRepository
         public async Task<AccountReadModel> GetAccountByIdAsync(Guid contaId)
         {
             const string sql = @"
-           SELECT Id, NumeroConta, Saldo, ClienteId, NomeCliente, DataAbertura, Ativa, UltimaAtualizacao
-           FROM ContasReadModel 
-           WHERE Id = :ContaId";
+           SELECT idcontacorrente, numero, nome, ativo, saldo
+           FROM contacorrente 
+           WHERE idcontacorrente = :ContaId";
 
-            return await _context.Connection.QueryFirstOrDefaultAsync<AccountReadModel>(
+			var account = await _context.GetConnection().QueryFirstOrDefaultAsync<AccountReadModel>(
                 sql, new { ContaId = contaId });
-        }
+
+			if (account == null)
+			{
+				throw new KeyNotFoundException($"Conta com ID {contaId} não encontrada.");
+			}
+
+			return account;
+		}
 
     }
 }
