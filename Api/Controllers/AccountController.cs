@@ -1,4 +1,6 @@
 ﻿using BankMore.Application.Commands;
+using BankMore.Application.Exceptions;
+using BankMore.Application.Extensions;
 using BankMore.Application.Models.ReadModels;
 using BankMore.Application.Models.Responses;
 using BankMore.Application.Queries;
@@ -33,7 +35,7 @@ namespace BankMore.API.Controllers
 		[ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<ActionResult<Guid>> CreateAccount([FromBody] CreateAccountCommand command)
+		public async Task<IActionResult> CreateAccount([FromBody] CreateAccountCommand command)
 		{
 			try
 			{
@@ -71,15 +73,9 @@ namespace BankMore.API.Controllers
 					IdContaCorrente = accountId
 				});
 			}
-			catch (Exception ex)
+			catch (CustomExceptions ex)
 			{
-				_logger.LogError(ex, ex.Message+" {CPF}", command.Cpf);
-				return BadRequest(new CreateAccountResponse
-				{
-					Success = false,
-					Message = ex.Message,
-					Error = ex.Message
-				});
+				return ex.ToActionResult();
 			}
 		}
 
@@ -93,7 +89,7 @@ namespace BankMore.API.Controllers
 		[ProducesResponseType(typeof(AccountReadModel), StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<ActionResult<AccountReadModel>> GetAccountById(Guid id)
+		public async Task<IActionResult> GetAccountById(Guid id)
 		{
 			try
 			{
@@ -113,33 +109,33 @@ namespace BankMore.API.Controllers
 
 				return Ok(account);
 			}
-			catch (Exception ex)
+			catch (CustomExceptions ex)
 			{
-				_logger.LogError(ex, "Erro ao buscar conta por ID: {AccountId}", id);
-				return StatusCode(500, new { Error = "Erro interno do servidor" });
+				return ex.ToActionResult();
 			}
 		}
 
 		/// <summary>
-		/// Gerar lista de todas as contas
+		/// Desativar conta 
 		/// </summary>
-		/// <returns>Lista de contas</returns>
-		[HttpGet]
-		[ProducesResponseType(typeof(IEnumerable<AccountReadModel>), StatusCodes.Status200OK)]
+		/// <returns></returns>
+		[HttpPost("Deactivate")]
+		[ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
+		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<ActionResult<IEnumerable<AccountReadModel>>> GetAllAccounts()
+		public async Task<IActionResult> DeactivateAccount([FromBody] DeactivateAccountCommand command)
 		{
 			try
 			{
-				_logger.LogInformation("Buscando todas as contas");
+				_logger.LogInformation("Iniciando desativação da conta");
 
-				// Por enquanto, retornar não implementado
-				return StatusCode(501, new { Message = "Endpoint em implementação" });
+				var accountId = await _mediator.Send(command);
+				return Ok(accountId);
+
 			}
-			catch (Exception ex)
+			catch (CustomExceptions ex)
 			{
-				_logger.LogError(ex, "Erro ao buscar todas as contas");
-				return StatusCode(500, new { Error = "Erro interno do servidor" });
+				return ex.ToActionResult();
 			}
 		}
 

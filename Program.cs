@@ -2,12 +2,15 @@ using BankMore.Application.Handlers;
 using BankMore.Application.Models.Infrastructure.ConfigContext;
 using BankMore.Application.Models.Infrastructure.Repositories.ReadRepository;
 using BankMore.Application.Models.Infrastructure.Repositories.WriteRepository;
+using BankMore.Application.Services;
 using BankMore.Domain.Interfaces.IRepositories.IReadRepository;
 using BankMore.Domain.Interfaces.IRepositories.IWriteRepository;
+using BankMore.Domain.Interfaces.IServices;
 using Dapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Data.Sqlite;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using SQLitePCL;
 using System.Data;
 using System.Text;
@@ -49,6 +52,7 @@ namespace BankMore
 			builder.Services.AddScoped<ITransactionWriteRepository, TransactionWriteRepository>();
 			builder.Services.AddScoped<IAccountReadRepository, AccountReadRepository>();
 			builder.Services.AddScoped<ITransactionReadRepository, TransactionReadRepository>();
+			builder.Services.AddScoped<ITokenService, TokenService>();
 
 			builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(typeof(CreateAccountCommandHandler).Assembly));
 
@@ -71,6 +75,36 @@ namespace BankMore
 				var connection = provider.GetRequiredService<IDbConnection>();
 				return new DapperContext(connection);
 			});
+
+			builder.Services.AddSwaggerGen(c =>
+			{
+				c.SwaggerDoc("v1", new() { Title = "Bank More API", Version = "v1" });
+
+				c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+				{
+					Description = "Autenticação JWT via header Authorization. Exemplo: Bearer {token}",
+					Name = "Authorization",
+					In = ParameterLocation.Header,
+					Type = SecuritySchemeType.ApiKey,
+					Scheme = "Bearer"
+				});
+
+				c.AddSecurityRequirement(new OpenApiSecurityRequirement
+	{
+		{
+			new OpenApiSecurityScheme
+			{
+				Reference = new OpenApiReference
+				{
+					Type = ReferenceType.SecurityScheme,
+					Id = "Bearer"
+				}
+			},
+			Array.Empty<string>()
+		}
+	});
+			});
+
 
 			var app = builder.Build();
 

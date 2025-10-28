@@ -18,5 +18,12 @@ namespace BankMore.Domain.Interfaces.IRepositories.IWriteRepository
 		/// </summary>
 		Task UpdateBalanceAsync(Guid contaId, decimal novoSaldo);
 
+		/// <summary>
+		/// Desativa uma conta corrente
+		/// </summary>
+		/// <param name="contaId"></param>
+		/// <returns></returns>
+		Task DeactivateAccountAsync(Guid? contaId);
+
 	}
 }
