@@ -61,7 +61,7 @@ namespace BankMore.Domain.Entities
 			Senha = Convert.ToBase64String(hashBytes);
 		}
 
-		public bool ValidarSenha(string senhaInformada)
+		public bool ValidatePassword(string senhaInformada)
 		{
 			var saltBytes = Convert.FromBase64String(Salt);
 

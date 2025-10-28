@@ -1,9 +1,6 @@
 ﻿using BankMore.Application.Commands;
 using BankMore.Application.Models.WriteModels;
-using BankMore.Domain.Exceptions;
 using BankMore.Domain.Interfaces.IRepositories.IWriteRepository;
-using BankMore.Domain.ValueObjects;
-using CSharpFunctionalExtensions;
 using MediatR;
 
 namespace BankMore.Application.Handlers

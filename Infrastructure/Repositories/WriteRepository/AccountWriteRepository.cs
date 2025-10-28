@@ -54,8 +54,21 @@ namespace BankMore.Application.Models.Infrastructure.Repositories.WriteRepositor
             {
                 ContaId = contaId,
                 NovoSaldo = novoSaldo,
-                UltimaAtualizacao = DateTime.UtcNow
             }, _context.Transaction);
         }
-    }
+
+		public async Task DeactivateAccountAsync(Guid? contaId)
+		{
+			const string sql = @"
+                                    UPDATE contacorrente 
+                                    SET ativo = :Activate
+                                    WHERE idcontacorrente = :ContaId";
+
+			await _context.GetConnection().ExecuteAsync(sql, new
+			{
+				ContaId = contaId,
+				Activate = 0,
+			}, _context.Transaction);
+		}
+	}
 }

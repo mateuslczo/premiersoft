@@ -17,6 +17,8 @@ namespace BankMore.Application.Models.ReadModels
 
 		public bool Ativo { get; set; }
 
+		public string? Salt { get; set; }
+
 		public decimal Saldo { get; set; }
 	}
 }
