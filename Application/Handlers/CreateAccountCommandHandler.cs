@@ -17,7 +17,7 @@ namespace BankMore.Application.Handlers
         public async Task<Guid> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
         {
 
-			var accountId = Guid.NewGuid();
+			//var accountId = int.NewGuid();
 
             var account = new AccountWriteModel
             {
