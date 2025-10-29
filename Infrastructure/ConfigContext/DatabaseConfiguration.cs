@@ -28,8 +28,8 @@ namespace BankMore.Application.Models.Infrastructure.ConfigContext
 
             const string createCurrentAccountTable = @"
                 CREATE TABLE contacorrente (
-	                idcontacorrente TEXT(37) PRIMARY KEY, -- id da conta corrente
-	                numero INTEGER(10) NOT NULL UNIQUE, -- numero da conta corrente
+	                idcontacorrente INTEGER PRIMARY KEY AUTOINCREMENT, -- id da conta corrente
+	                numero INTEGER NOT NULL UNIQUE, -- numero da conta corrente
 	                nome TEXT(100) NOT NULL, -- nome do titular da conta corrente
 	                ativo INTEGER(1) NOT NULL default 0, -- indicativo se a conta esta ativa. (0 = inativa, 1 = ativa).
 	                senha TEXT(100) NOT NULL,
@@ -40,8 +40,8 @@ namespace BankMore.Application.Models.Infrastructure.ConfigContext
 
 			const string createMovimentTable = @"
 			CREATE TABLE IF NOT EXISTS movimento(
-	                idMovimento TEXT(37) PRIMARY KEY, --identificação única do movimento
-	                idContaCorrente TEXT(37) NOT NULL, --identificação única da conta corrente
+	                idMovimento INTEGER PRIMARY KEY AUTOINCREMENT, --identificação única do movimento
+	                idContaCorrente  INTEGER NOT NULL, --identificação única da conta corrente
 	                descricao TEXT(100) NOT NULL, --identificação única da conta corrente
 	                tipoMovimento TEXT(1) NOT NULL, --tipo do movimento: (C = Crédito, D = Débito)
 	                dataMovimento TEXT(25) NOT NULL, --data do movimento no formato DD / MM / YYYY
@@ -61,9 +61,9 @@ namespace BankMore.Application.Models.Infrastructure.ConfigContext
 
             const string createTransferTable = @"
             CREATE TABLE transferencia(
-                        idtransferencia TEXT(37) PRIMARY KEY, -- identificacao unica da transferencia
-                        idcontacorrente_origem TEXT(37) NOT NULL, -- identificacao unica da conta corrente de origem
-                        idcontacorrente_destino TEXT(37) NOT NULL, -- identificacao unica da conta corrente de destino
+                        idtransferencia INTEGER PRIMARY KEY AUTOINCREMENT, -- identificacao unica da transferencia
+                        idcontacorrente_origem INTEGER NOT NULL, -- identificacao unica da conta corrente de origem
+                        idcontacorrente_destino INTEGER NOT NULL, -- identificacao unica da conta corrente de destino
                         datamovimento TEXT(25) NOT NULL,     -- data do transferencia no formato DD / MM / YYYY
                         valor REAL NOT NULL,        -- valor da transferencia. Usar duas casas decimais.
                         FOREIGN KEY(idtransferencia) REFERENCES transferencia(idtransferencia)";

@@ -5,7 +5,7 @@ using MediatR;
 
 namespace BankMore.Application.Handlers
 {
-	public class CreateTransactionAccountCommandHandler : IRequestHandler<CreateTransactionAccountCommand, Guid>
+	public class CreateTransactionAccountCommandHandler : IRequestHandler<CreateTransactionAccountCommand, int>
     {
         private readonly ITransactionWriteRepository _repository;
 
@@ -14,14 +14,11 @@ namespace BankMore.Application.Handlers
             _repository = repository;
         }
 
-        public async Task<Guid> Handle(CreateTransactionAccountCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateTransactionAccountCommand request, CancellationToken cancellationToken)
         {
-
-            var transactionAccountId = Guid.NewGuid();
 
             var transactionAccount = new TransactionWriteModel
             {
-                IdMovimento = transactionAccountId,
                 IdContaCorrente = request.IdContaCorrente,
                 Descricao = request.Descricao,
                 Valor = request.Valor,
@@ -30,8 +27,8 @@ namespace BankMore.Application.Handlers
          
             };
 
-            await _repository.AddTransactionByAccountAsync(transactionAccount);
-            return transactionAccountId;
+            return await _repository.AddTransactionByAccountAsync(transactionAccount);
+      
         }
     }
 }

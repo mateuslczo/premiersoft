@@ -2,11 +2,11 @@
 
 namespace BankMore.Application.Commands
 {
-	public class CreateTransactionAccountCommand :IRequest<Guid>
+	public class CreateTransactionAccountCommand :IRequest<int>
 	{
-		public Guid IdMovimento { get; set; }
+		public int IdMovimento { get; set; }
 
-		public Guid IdContaCorrente { get; set; }
+		public int IdContaCorrente { get; set; }
 
 		public string TipoMovimento { get; set; } = string.Empty;
 

@@ -9,8 +9,8 @@ namespace BankMore.Domain.Entities
 	public class TransactionAccount
 	{
 
-		public Guid IdMovimento { get; private set; }
-		public Guid IdContaCorrente { get; private set; }
+		public int IdMovimento { get; private set; }
+		public int IdContaCorrente { get; private set; }
 		public string TipoMovimento { get; set; } = string.Empty;
 		public string Descricao { get; set; } = string.Empty;
 		public decimal Valor { get; set; } = 0M;

@@ -2,9 +2,9 @@
 
 namespace BankMore.Application.Commands
 {
-	public class DeactivateAccountCommand :IRequest<Guid>
+	public class DeactivateAccountCommand :IRequest<int>
 	{
-        public Guid IdContaCorrente { get; set; }
+        public int IdContaCorrente { get; set; }
         public string Cpf { get; set; }
 		public int Numero { get; set; }
 		public string Senha { get; set; }

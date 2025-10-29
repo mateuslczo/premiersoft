@@ -9,7 +9,7 @@ namespace BankMore.Domain.Interfaces.IRepositories.IReadRepository
 		/// </summary>
 		/// <param name="idContaCorrente">O ID único da conta corrente</param>
 		/// <returns>Dados da conta ou null se não encontrado</returns>
-		Task<AccountReadModel?> GetAccountByIdAsync(Guid contaId);
+		Task<AccountReadModel?> GetAccountByIdAsync(int idContaCorrente);
 
 	}
 }

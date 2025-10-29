@@ -17,7 +17,7 @@ namespace BankMore.Application.Models.Infrastructure.Repositories.ReadRepository
         }
 
         public async Task<TransactionReadModel> GetTransactionByIdAccountAsync(
-            Guid contaId, DateTime? dataInicio, DateTime? dataFim)
+            int contaId, DateTime? dataInicio, DateTime? dataFim)
         {
             var sql = @"
 						  SELECT IdMovimento, idContaCorrente, TipoMovimento, Valor, SaldoAnterior, SaldoAtual, Descricao, DataMovimento

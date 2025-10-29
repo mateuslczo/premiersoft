@@ -5,7 +5,7 @@ using MediatR;
 
 namespace BankMore.Application.Handlers
 {
-	public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand, Guid>
+	public class CreateAccountCommandHandler : IRequestHandler<CreateAccountCommand, int>
     {
         private readonly IAccountWriteRepository _repository;
 
@@ -14,22 +14,20 @@ namespace BankMore.Application.Handlers
             _repository = repository;
         }
 
-        public async Task<Guid> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
         {
 
-			//var accountId = int.NewGuid();
-
+		
             var account = new AccountWriteModel
             {
-                IdContaCorrente = accountId,
                 Nome = request.Nome,
                 Senha = request.Senha,
                 Ativo = true,
                 Salt = request.Salt
             };
 
-            await _repository.InsertAccountAsync(account);
-            return accountId;
+           return await _repository.InsertAccountAsync(account);
+
         }
     }
 }

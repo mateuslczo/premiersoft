@@ -8,7 +8,7 @@ namespace BankMore.Domain.Entities
 	/// </summary>
 	public class CurrentAccount
 	{
-		public Guid IdContaCorrente { get; private set; }
+		public int IdContaCorrente { get; private set; }
 		public int Numero { get; private set; }
 		public string Nome { get; private set; } = string.Empty;
 		public bool Ativo { get; private set; }
@@ -20,7 +20,6 @@ namespace BankMore.Domain.Entities
 
 		public CurrentAccount(string nome, string senha)
 		{
-			IdContaCorrente = Guid.NewGuid();
 			Nome = nome;
 			Ativo = true;
 

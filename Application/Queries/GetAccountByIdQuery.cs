@@ -5,9 +5,9 @@ namespace BankMore.Application.Queries
 {
 	public class  GetAccountByIdQuery :IRequest<AccountReadModel?>
 	{
-		public Guid IdContaCorrente { get; set; }
+		public int IdContaCorrente { get; set; }
 
-		public GetAccountByIdQuery(Guid idContaCorrente)
+		public GetAccountByIdQuery(int idContaCorrente)
 		{
 			IdContaCorrente = idContaCorrente;
 		}

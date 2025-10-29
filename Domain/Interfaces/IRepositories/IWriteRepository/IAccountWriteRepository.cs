@@ -11,19 +11,19 @@ namespace BankMore.Domain.Interfaces.IRepositories.IWriteRepository
 		/// <summary>
 		/// Adiciona um registro na tabela.
 		/// </summary>
-		Task InsertAccountAsync(AccountWriteModel account);
+		Task<int> InsertAccountAsync(AccountWriteModel account);
 
 		/// <summary>
 		/// Atualiza um registro na tabela.
 		/// </summary>
-		Task UpdateBalanceAsync(Guid contaId, decimal novoSaldo);
+		Task UpdateBalanceAsync(int contaId, decimal novoSaldo);
 
 		/// <summary>
 		/// Desativa uma conta corrente
 		/// </summary>
 		/// <param name="contaId"></param>
 		/// <returns></returns>
-		Task DeactivateAccountAsync(Guid? contaId);
+		Task DeactivateAccountAsync(int? contaId);
 
 	}
 }

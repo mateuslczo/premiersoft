@@ -7,7 +7,7 @@ using MediatR;
 namespace BankMore.Application.Handlers
 {
 
-	public class DeactivateAccountCommandHandler :IRequestHandler<DeactivateAccountCommand, Guid>
+	public class DeactivateAccountCommandHandler :IRequestHandler<DeactivateAccountCommand, int>
 	{
 		private readonly IAccountWriteRepository _writeRepository;
 		private readonly IAccountReadRepository _readRepository;
@@ -23,7 +23,7 @@ namespace BankMore.Application.Handlers
 			_logger = logger;
 		}
 
-		public async Task<Guid> Handle(DeactivateAccountCommand request, CancellationToken cancellationToken)
+		public async Task<int> Handle(DeactivateAccountCommand request, CancellationToken cancellationToken)
 		{
 			_logger.LogInformation("Iniciando desativação da conta para CPF: {Cpf} e Número: {Numero}",
 				request.Cpf, request.Numero);
