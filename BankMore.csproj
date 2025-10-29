@@ -7,9 +7,12 @@
     <UserSecretsId>a26ab28c-ffaa-4ec7-9a79-635c8cca6cb6</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
+  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
-  <ItemGroup>
+    <ItemGroup>
+    <PackageReference Include="Carbon.Redis" Version="3.0.1" />
     <PackageReference Include="Cqrs" Version="6.0.0.76" />
     <PackageReference Include="CSharpFunctionalExtensions" Version="3.6.0" />
     <PackageReference Include="Dapper" Version="2.1.66" />

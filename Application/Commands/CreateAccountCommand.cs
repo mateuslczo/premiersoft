@@ -2,9 +2,9 @@
 
 namespace BankMore.Application.Commands
 {
-	public class CreateAccountCommand :IRequest<Guid>
+	public class CreateAccountCommand :IRequest<int>
 	{
-		public Guid IdContaCorrente { get; set; }
+		public int IdContaCorrente { get; set; }
 		public string Nome { get; set; }
         public string Cpf { get; set; }
         public int Numero { get; set; }

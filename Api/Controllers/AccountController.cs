@@ -31,16 +31,16 @@ namespace BankMore.API.Controllers
 		/// </summary>
 		/// <param name="command"></param>
 		/// <returns>Numero da conta</returns>
-		[HttpPost]
-		[ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
+		[HttpPost("OpenCurrentAccount")]
+		[ProducesResponseType(typeof(int), StatusCodes.Status201Created)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
 		public async Task<IActionResult> CreateAccount([FromBody] CreateAccountCommand command)
 		{
 			try
 			{
-				_logger.LogInformation("Criando conta para: {Nome} - Número: {Numero}",
-					command.Nome, command.Numero);
+				_logger.LogInformation("Criando conta para: {Nome}",
+					command.Nome);
 
 				if (string.IsNullOrWhiteSpace(command.Cpf) || string.IsNullOrWhiteSpace(command.Senha))
 					return BadRequest(new CreateAccountResponse
@@ -83,13 +83,13 @@ namespace BankMore.API.Controllers
 		/// <summary>
 		/// Buscar conta corrente por id
 		/// </summary>
-		/// <param name="command"></param>
+		/// <param name="id"></param>
 		/// <returns>Dados da conta</returns>
 		[HttpGet("{id}")]
 		[ProducesResponseType(typeof(AccountReadModel), StatusCodes.Status200OK)]
 		[ProducesResponseType(StatusCodes.Status404NotFound)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
-		public async Task<IActionResult> GetAccountById(Guid id)
+		public async Task<IActionResult> GetAccountById(int id)
 		{
 			try
 			{
@@ -120,7 +120,7 @@ namespace BankMore.API.Controllers
 		/// </summary>
 		/// <returns></returns>
 		[HttpPost("Deactivate")]
-		[ProducesResponseType(typeof(Guid), StatusCodes.Status201Created)]
+		[ProducesResponseType(typeof(int), StatusCodes.Status201Created)]
 		[ProducesResponseType(StatusCodes.Status400BadRequest)]
 		[ProducesResponseType(StatusCodes.Status500InternalServerError)]
 		public async Task<IActionResult> DeactivateAccount([FromBody] DeactivateAccountCommand command)

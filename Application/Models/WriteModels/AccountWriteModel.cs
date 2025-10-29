@@ -7,7 +7,7 @@
 	public class AccountWriteModel
 	{
 
-		public Guid? IdContaCorrente { get; set; }
+		public int? IdContaCorrente { get; set; }
 
 		public int Numero { get; set; }
 

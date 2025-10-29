@@ -10,7 +10,7 @@ namespace BankMore.Domain.Interfaces.IRepositories.IWriteRepository
 		/// </summary>
 		/// <param name="transaction"></param>
 		/// <returns></returns>
-		Task AddTransactionByAccountAsync(TransactionWriteModel transaction);
+		Task<int> AddTransactionByAccountAsync(TransactionWriteModel transaction);
 
 	}
 }
