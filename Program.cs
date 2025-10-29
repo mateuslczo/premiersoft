@@ -3,9 +3,11 @@ using BankMore.Application.Models.Infrastructure.ConfigContext;
 using BankMore.Application.Models.Infrastructure.Repositories.ReadRepository;
 using BankMore.Application.Models.Infrastructure.Repositories.WriteRepository;
 using BankMore.Application.Services;
+using BankMore.Domain.Interfaces.IRedisCached;
 using BankMore.Domain.Interfaces.IRepositories.IReadRepository;
 using BankMore.Domain.Interfaces.IRepositories.IWriteRepository;
 using BankMore.Domain.Interfaces.IServices;
+using BankMore.Infrastructure.RedisCached;
 using Dapper;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Data.Sqlite;
@@ -69,6 +71,20 @@ namespace BankMore
 
 				return connection;
 			});
+
+			// Redis
+			builder.Services.Configure<RedisSettingsService>(
+	builder.Configuration.GetSection("RedisSettingsOnOff")
+);
+
+			builder.Services.AddStackExchangeRedisCache(options =>
+			{
+				options.Configuration = builder.Configuration["RedisSettings:ConnectionString"];
+			});
+
+			builder.Services.AddScoped<IRedisCacheRepository, RedisCacheRepository>();
+			builder.Services.AddScoped<IRedisCacheService, RedisCacheService>();
+
 
 			builder.Services.AddSingleton<DapperContext>(provider =>
 			{
